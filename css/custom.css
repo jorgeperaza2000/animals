@@ -1,0 +1,18 @@
+.clear{
+	margin-bottom: 30px;
+}
+.center {
+	margin: auto !important;
+	text-align: center !important;
+}
+.animal {
+	min-height: 60px;
+	height: 60px;
+	margin: 2px 0px;
+	border: none;
+	text-align: center;
+	line-height: 60px;
+}
+#total{
+	font-size: 22px;
+}
