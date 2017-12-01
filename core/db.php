@@ -15,6 +15,7 @@ if ( $production ) {
 		'port' => 3306,
 		'option' => [ PDO::ATTR_CASE => PDO::CASE_NATURAL]
 	]);
+	$setTimeZone = $db->query("SET time_zone = '-03:57'");
 	
 } else {
 	$db = new Medoo([
@@ -23,7 +24,7 @@ if ( $production ) {
 		'database_name' => 'animalitos',
 		'server' => 'localhost',
 		'username' => 'root',
-		'password' => '1211',
+		'password' => '',
 		//'database_name' => 'webfz',
 		//'server' => 'localhost',
 		//'username' => 'webmzurita',
@@ -32,5 +33,6 @@ if ( $production ) {
 		'port' => 3306,
 		'option' => [ PDO::ATTR_CASE => PDO::CASE_NATURAL]
 	]);
+	$setTimeZone = $db->query("SET time_zone = '-03:57'");
 }
 ?>

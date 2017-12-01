@@ -9,6 +9,9 @@ class Functions {
 
 		require '../core/db.php';
 
+		$abrirSorteos = $db->query("UPDATE sorteos SET estatus = 0 WHERE hora_limite > CURRENT_TIME()");
+		$cerrarSorteos = $db->query("UPDATE sorteos SET estatus = 1 WHERE hora_limite <= CURRENT_TIME()");
+
 		$sorteos = $db->select("sorteos", "*", ["estatus" => 0]);
 		echo json_encode($sorteos);
 

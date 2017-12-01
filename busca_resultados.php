@@ -1,11 +1,6 @@
 <?php
-//u702758025_anima
-//8zVod8FQfCqu
-//CUANDO NO HA SALIDO
-//logolottoactivo_d200.png
 require 'core/db.php';
 
-//$url="http://animalitos.local/resultados_todos.html";
 $url="http://www.lottoactivo.com/resumen";
 
 $html = file_get_contents($url);
@@ -24,7 +19,6 @@ foreach ($tags as $tag) {
 
 	$part = explode("/", $src);
 	$numero = str_replace("_d200.png", "", $part[7]);
-	//echo ($numero=="logolottoactivo")?"No ha Salido". " " . $sorteo . "<br>":$numero . " " . $sorteo . "<br>";
 
 	if ( $numero != "logolottoactivo" ) {
 		$resultados = $db->insert("resultados", [

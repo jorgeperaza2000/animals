@@ -6,7 +6,7 @@ use socketHttp\socketHttp;
 class Functions {
 
 	public function getDataList( $id = null ) {
-
+		
 	}
 
 	public function saveData() {
@@ -21,10 +21,21 @@ class Functions {
 			$respuesta[] = [
 							"codigoRespuesta" => "ok",
 							"id" => $datos[0]["id"],
-							"usuario" => $datos[0]["name"],
+							"nombre" => $datos[0]["name"],
 							"agencia" => $datos[0]["agencia"],
 							"tipo" => $datos[0]["tipo"]
 						   ];
+
+			$loginHoy = $db->query("SELECT COUNT(*) login FROM users WHERE DATE_FORMAT(updated_at, '%Y-%m-%d') = DATE_FORMAT(CURDATE(), '%Y-%m-%d') AND agencia = '" . $datos[0]["agencia"] . "'")->fetchAll();
+			if ( $loginHoy[0]["login"] > 0 ) {
+				$actualizaUltimoLogin = $db->update("users", ["#updated_at" => "NOW()"], ["id" => $datos[0]["id"]]);
+			} else {
+				$actualizaAcumulados = $db->update("limites", ["monto_acumulado" => 0]);
+				$actualizaUltimoLogin = $db->update("users", ["#updated_at" => "NOW()"], ["id" => $datos[0]["id"]]);
+			}
+			$abrirSorteos = $db->query("UPDATE sorteos SET estatus = 0 WHERE hora_limite > CURRENT_TIME()");
+			$cerrarSorteos = $db->query("UPDATE sorteos SET estatus = 1 WHERE hora_limite <= CURRENT_TIME()");
+
 		} else {
 			$respuesta[] = [
 							"codigoRespuesta" => "error"

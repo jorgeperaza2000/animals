@@ -11,7 +11,11 @@ class Functions {
 
 		$resultados = $db->max("tickets", "numero_ticket", ["fecha" => date("Y-m-d", strtotime($id)), "agencia" => $agencia]);
 		//$sorteos = $db->select("sorteos", "*", ["estatus" => 0]);
-		$datos[]["numero_ticket"] = $resultados + 1;
+		if ( $resultados ) {
+			$datos[]["numero_ticket"] = $resultados + 1;	
+		} else {
+			$datos[]["numero_ticket"] = 1;
+		}
 		echo json_encode($datos);
 
 
