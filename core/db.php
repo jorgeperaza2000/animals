@@ -1,7 +1,7 @@
 <?php
 include 'Medoo.php';
 use Medoo\Medoo;
-$production = true;
+$production = false;
 if ( $production ) {
 
 	$db = new Medoo([
@@ -21,7 +21,7 @@ if ( $production ) {
 	$db = new Medoo([
 	// required
 		'database_type' => 'mysql',
-		'database_name' => 'animalitos',
+		'database_name' => 'hidra',
 		'server' => 'localhost',
 		'username' => 'root',
 		'password' => '',

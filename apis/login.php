@@ -33,8 +33,8 @@ class Functions {
 				$actualizaAcumulados = $db->update("limites", ["monto_acumulado" => 0]);
 				$actualizaUltimoLogin = $db->update("users", ["#updated_at" => "NOW()"], ["id" => $datos[0]["id"]]);
 			}
-			$abrirSorteos = $db->query("UPDATE sorteos SET estatus = 0 WHERE hora_limite > CURRENT_TIME()");
-			$cerrarSorteos = $db->query("UPDATE sorteos SET estatus = 1 WHERE hora_limite <= CURRENT_TIME()");
+			//$abrirSorteos = $db->query("UPDATE sorteos SET estatus = 0 WHERE hora_limite > CURRENT_TIME()");
+			//$cerrarSorteos = $db->query("UPDATE sorteos SET estatus = 1 WHERE hora_limite <= CURRENT_TIME()");
 
 		} else {
 			$respuesta[] = [

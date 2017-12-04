@@ -487,7 +487,7 @@ CREATE TRIGGER `generarTicketsPremiados` AFTER INSERT ON `resultados` FOR EACH R
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `quitarPremiadosAnterioresNoPagados` AFTER INSERT ON `resultados` FOR EACH ROW UPDATE ticket_det SET monto_premiado = 0, estatus = 0 WHERE id_sorteo = NEW.id_sorteo AND numero_apuesta != NEW.numero_apuesta AND fecha = NEW.fecha AND pagado = 0 AND estatus != 3
+CREATE TRIGGER `quitarPremiadosAnterioresNoPagados` BEFORE INSERT ON `resultados` FOR EACH ROW UPDATE ticket_det SET monto_premiado = 0, estatus = 0 WHERE id_sorteo = NEW.id_sorteo AND numero_apuesta != NEW.numero_apuesta AND fecha = NEW.fecha AND pagado = 0 AND estatus != 3
 $$
 DELIMITER ;
 

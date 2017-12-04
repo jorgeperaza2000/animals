@@ -7,41 +7,25 @@ class Functions {
 
 	public function getDataList( $id = null ) {
 
-		require '../core/db.php';
+		/*require '../core/db.php';
 
 		
 		$sorteos = $db->query("SELECT * FROM sorteos WHERE id NOT IN (SELECT id_sorteo FROM resultados WHERE fecha = CURDATE()) AND estatus = 1")->fetchAll();
-		echo json_encode($sorteos);
+		echo json_encode($sorteos);*/
 
 	}
 
 	public function saveData() {
 		
-		$client = new socketHttp();
+		require '../core/db.php';
 
-        require '../core/db.php';
-
-        
-        $anular = $db->insert("resultados", ["#fecha" => "NOW()", ""]);
+        $cargar = $db->insert("resultados", [
+                                                "#fecha" => $_POST["fecha"], 
+                                                "id_sorteo" => $_POST["cboSorteoId"],
+                                                "numero_apuesta" => $_POST["numero_apuesta"],
+                                            ]);
     
-        $respuesta[] = ["codigoRespuesta" => "ok"];
-        
-                }
-
-            } else {
-
-                $respuesta[] = ["codigoRespuesta" => "ticket-anulado"];
-
-            }
-
-        } else {
-
-            $respuesta[] = ["codigoRespuesta" => "ticket-no-existe"];
-
-        }
-        
-        echo json_encode($respuesta);
-
+        echo "Ok";
 	}
 
 	public function updateData( $id = null  ) {
