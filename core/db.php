@@ -7,15 +7,15 @@ if ( $production ) {
 	$db = new Medoo([
 	// required
 		'database_type' => 'mysql',
-		'database_name' => 'u702758025_anima',
+		'database_name' => 'hidra',
 		'server' => 'localhost',
-		'username' => 'u702758025_anima',
-		'password' => '8zVod8FQfCqu',
+		'username' => 'root',
+		'password' => 'ximplex',
 		'charset' => 'utf8',
 		'port' => 3306,
 		'option' => [ PDO::ATTR_CASE => PDO::CASE_NATURAL]
 	]);
-	$setTimeZone = $db->query("SET time_zone = '-03:57'");
+	//$setTimeZone = $db->query("SET time_zone = '-03:57'");
 	
 } else {
 	$db = new Medoo([
@@ -33,6 +33,6 @@ if ( $production ) {
 		'port' => 3306,
 		'option' => [ PDO::ATTR_CASE => PDO::CASE_NATURAL]
 	]);
-	$setTimeZone = $db->query("SET time_zone = '-04:03'");
+	//$setTimeZone = $db->query("SET time_zone = '-04:03'");
 }
 ?>

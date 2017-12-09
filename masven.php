@@ -6,7 +6,6 @@
 </head>
 <body>
 	<form name="frmCargarResultados" method="POST" action="masven.php">
-		<input type="text" name="fecha" value="<?=date("Y-m-d")?>">
 		<select name="cboSorteoId">
 			<option value="1">@10</option>
 			<option value="2">@11</option>
@@ -25,13 +24,11 @@
 		require 'core/db.php';
 
         $masven = $db->select("vw_mas_jugados", "*", [
-		                            "fecha" => $_POST["fecha"], 
 		                            "id_sorteo" => $_POST["cboSorteoId"]
 		                        ]);
     	?>
     	<table width="800" border="1">
 			<tr>
-				<td>Fecha</td>
 				<td>Sorteo</td>
 				<td>Numero</td>
 				<td>Monto</td>
@@ -40,7 +37,6 @@
         foreach ($masven as $key => $value) {
         ?>
         	<tr>
-				<td><?=$value["fecha"]?></td>
 				<td><?=getNombreSorteo($value["id_sorteo"])?></td>
 				<td><?=$value["numero_apuesta"]?></td>
 				<td><?=$value["monto_apostado"]?></td>
