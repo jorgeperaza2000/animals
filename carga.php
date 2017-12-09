@@ -7,7 +7,7 @@
 <body>
 	<?php 
 	require 'core/db.php';
-	$sorteos = $db->get("sorteos", "*", ["estatus" => 1, "ORDER" => ["orden" => "DESC"]]);
+	$sorteos = $db->get("sorteos", "*", ["AND" => ["estatus" => 1, "id[!]" => ["3", "9"]], "ORDER" => ["orden" => "DESC"]]);
 	$sorteo[] = $sorteos;
 	?>
 	<form name="frmCargarResultados" method="POST" action="carga.php">
